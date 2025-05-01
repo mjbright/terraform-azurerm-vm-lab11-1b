@@ -40,7 +40,7 @@ resource azurerm_network_interface nic {
   resource_group_name = var.resource_group
 
   ip_configuration {
-    name                          = "${var.prefix}ipconfig"
+    name                          = "${var.prefix}-ipconfig"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.pip.id
