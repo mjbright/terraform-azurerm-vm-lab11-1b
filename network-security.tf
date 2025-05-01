@@ -1,6 +1,6 @@
 
 # Define security group
-resource "azurerm_network_security_group" "sec-grp" {
+resource azurerm_network_security_group sec-grp {
   name                = "${var.prefix}-sec-grp"
   #location            = azurerm_resource_group.rg.location
   location            = var.location
@@ -21,7 +21,7 @@ resource "azurerm_network_security_group" "sec-grp" {
   }
 }
 
-resource "azurerm_subnet_network_security_group_association" "sg-asso" {
+resource azurerm_subnet_network_security_group_association sg-asso {
   subnet_id = azurerm_subnet.subnet.id
   network_security_group_id = azurerm_network_security_group.sec-grp.id
   depends_on = [

@@ -2,12 +2,12 @@
 # If working in your own environment, you may want to create a resource_group
 # In this lab environment you are limited to your ```studentN``` resource_group
 #
-#resource "azurerm_resource_group" "rg" {
+#resource "azurerm_resource_group rg {
 #  location = var.location
 #  name     = var.resource_group
 #}
 
-resource "azurerm_virtual_network" "vnet" {
+resource azurerm_virtual_network vnet {
   name                = "${var.prefix}-${var.virtual_network_name}"
   location            = var.location
   address_space       = [ var.address_space ]
@@ -22,7 +22,7 @@ resource "azurerm_virtual_network" "vnet" {
   tags = { source = "terraform" }
 }
 
-resource "azurerm_subnet" "subnet" {
+resource azurerm_subnet subnet {
   name                 = "${var.prefix}-subnet"
   virtual_network_name = azurerm_virtual_network.vnet.name
   #resource_group_name   = azurerm_resource_group.rg.name
@@ -33,7 +33,7 @@ resource "azurerm_subnet" "subnet" {
   # tags = { source = "terraform" }
 }
 
-resource "azurerm_network_interface" "nic" {
+resource azurerm_network_interface nic {
   name                = "${var.prefix}-nic"
   location            = var.location
   #resource_group_name   = azurerm_resource_group.rg.name
@@ -49,7 +49,7 @@ resource "azurerm_network_interface" "nic" {
   tags = { source = "terraform" }
 }
 
-resource "azurerm_public_ip" "pip" {
+resource azurerm_public_ip pip {
   name                         = "${var.prefix}-ip"
   location                     = var.location
   #resource_group_name   = azurerm_resource_group.rg.name
@@ -60,7 +60,7 @@ resource "azurerm_public_ip" "pip" {
   tags = { source = "terraform" }
 }
 
-resource "azurerm_linux_virtual_machine" "vm" {
+resource azurerm_linux_virtual_machine vm {
   name                  = "${var.prefix}-vm"
   location              = var.location
   #resource_group_name  = azurerm_resource_group.rg.name

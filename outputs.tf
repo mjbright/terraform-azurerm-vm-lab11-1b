@@ -5,15 +5,15 @@ locals {
   ip   = azurerm_linux_virtual_machine.vm.public_ip_address
 }
 
-output "hostname" {
+output hostname {
   value = var.hostname
 }
 
-output "vm_fqdn" {
+output vm_fqdn {
   value = local.fqdn
 }
 
-output "vm_ip" {
+output vm_ip {
   value = local.ip
 }
 
